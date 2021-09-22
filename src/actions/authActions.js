@@ -137,5 +137,6 @@ export const getPayments = (data, history) => dispatch => {
       // Save to localStorage
       // Set jwtTokento localStorage
       const { payments } = res.data;
+      console.log(payments);
     })
 };

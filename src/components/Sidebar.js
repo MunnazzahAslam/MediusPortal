@@ -106,18 +106,18 @@ export default (props = {}) => {
               <NavItem title="Users" link={Routes.Users.path} icon={faUsers} />
 
               <Dropdown.Divider className="my-3 border-indigo" />
+              <NavItem title="Copy Rights" link={Routes.AllCopyrights.path} icon={faBook} />
+              <NavItem title="Trademarks" link={Routes.AllTrademarks.path} icon={faTable} />
+              <NavItem title="Patents" link={Routes.AllPatents.path} icon={faCalendarAlt} />
+              <NavItem title="Designs" link={Routes.AllDesigns.path} icon={faRocket} />
+              
+              <Dropdown.Divider className="my-3 border-indigo" />
 
               <NavItem title="FAQs" link={Routes.FAQs.path} icon={faQuestionCircle} />
               <NavItem title="Cities" link={Routes.City.path} icon={faMapPin} />
               <NavItem title="Claims" link={Routes.Claim.path} icon={faFileAlt} />
               <NavItem title="IP Filters" link={Routes.IPFilter.path} icon={faBoxOpen} />
-
-              <Dropdown.Divider className="my-3 border-indigo" />
-
-              <NavItem title="Copy Rights" link={Routes.AllCopyrights.path} icon={faBook} />
-              <NavItem title="Trademarks" link={Routes.AllTrademarks.path} icon={faTable} />
-              <NavItem title="Patents" link={Routes.AllPatents.path} icon={faCalendarAlt} />
-              <NavItem title="Designs" link={Routes.AllDesigns.path} icon={faRocket} />
+   
             </Nav>
           </div>
         </SimpleBar>

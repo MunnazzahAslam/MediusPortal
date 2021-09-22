@@ -27,12 +27,11 @@ const User= (props)=> {
 
   return (
     <div className="mt-5">
-        <h3>{data.title}</h3>
-        <h6>Case Description: {data.description}</h6>
-        <h6>Mode of Registration: {data.modeofRegistration==1? "Normal" : "Fast"}</h6>
-        <h6>Attached Documents: <a href={data.documentPath}>Document</a></h6>
-        <h6>Attached Images: <a href={data.imagePath}>Image</a></h6>
-        <h6>Account status: {data.isActive == true ? "Active" : "Not Active"}</h6>
+        <h3>{data.userName}</h3>
+        <h6>User Email: {data.email}</h6>
+        <h6>Phone Number: {data.phoneNumber}</h6>
+        <h6>CNIC: {data.cnic}</h6>
+        <h6>Account status: {data.isActive === true ? "Active" : "Not Active"}</h6>
     </div>
   );
 }

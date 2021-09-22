@@ -96,7 +96,6 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
         <main className="content">
           <Navbar />
           <Component {...props} />
-          <Footer />
         </main>
       </>
     )}

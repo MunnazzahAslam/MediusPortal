@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen, faCartArrowDown, faChartPie, faChevronDown, faClipboard, faClosedCaptioning, faCommentDots, faFileAlt, faPlus, faRocket, faStore } from '@fortawesome/free-solid-svg-icons';
-import { Col, Row, Button, Dropdown, Form, Card } from '@themesberg/react-bootstrap';
+import { faClosedCaptioning } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row, Button, Form, Card } from '@themesberg/react-bootstrap';
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 import ProfileCover from "../assets/img/profile-cover.jpg";
 import { UpdateUser } from "../actions/authActions";
@@ -73,7 +73,7 @@ class Settings extends Component {
                 <Form noValidate onSubmit={this.onSubmit}>
                   <Row>
                     <Col md={6} className="mb-3">
-                      <Form.Group id="firstName">
+                      <Form.Group >
                         <Form.Label>First Name</Form.Label>
                         <Form.Control required type="text" autoFocus required type="text" placeholder="Munnazzah" onChange={this.onChange}
                           value={this.state.firstName}
@@ -81,7 +81,7 @@ class Settings extends Component {
                       </Form.Group>
                     </Col>
                     <Col md={6} className="mb-3">
-                      <Form.Group id="lastName">
+                      <Form.Group >
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control required type="text" autoFocus required type="text" placeholder="Aslam" onChange={this.onChange}
                           value={this.state.lastName}
@@ -107,7 +107,7 @@ class Settings extends Component {
                       </Form.Group>
                     </Col>
                     <Col md={6} className="mb-3">
-                      <Form.Group id="cnic">
+                      <Form.Group >
                         <Form.Label>CNIC</Form.Label>
                         <Form.Control required type="number" autoFocus required type="text" placeholder="4210103404580" onChange={this.onChange}
                           value={this.state.cnic}
@@ -119,7 +119,7 @@ class Settings extends Component {
                   <h5 className="my-4">Address</h5>
                   <Row>
                     <Col sm={9} className="mb-3">
-                      <Form.Group id="address">
+                      <Form.Group >
                         <Form.Label>Address</Form.Label>
                         <Form.Control required type="text" placeholder="Enter your home address" autoFocus required type="text" onChange={this.onChange}
                           value="A-76 Block:16 Ferderal B' Area"

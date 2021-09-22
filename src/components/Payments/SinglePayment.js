@@ -1,22 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { forwardRef } from 'react';
-import Grid from '@material-ui/core/Grid'
-import MaterialTable, { MTableToolbar } from "material-table";
-import AddBox from '@material-ui/icons/AddBox';
-import ArrowDownward from '@material-ui/icons/ArrowDownward';
-import Check from '@material-ui/icons/Check';
-import ChevronLeft from '@material-ui/icons/ChevronLeft';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import Clear from '@material-ui/icons/Clear';
-import DeleteOutline from '@material-ui/icons/DeleteOutline';
-import Edit from '@material-ui/icons/Edit';
-import FirstPage from '@material-ui/icons/FirstPage';
-import LastPage from '@material-ui/icons/LastPage';
-import Remove from '@material-ui/icons/Remove';
-import SaveAlt from '@material-ui/icons/SaveAlt';
-import Search from '@material-ui/icons/Search';
-import ViewColumn from '@material-ui/icons/ViewColumn';
+
 import axios from 'axios'
 
 const api = axios.create({
@@ -41,7 +24,7 @@ const SinglePayment= (props)=> {
         console.log(res)
       })
       .catch(error => {
-        console.log("Error")
+        console.log(error)
       })
   }, [])
 
