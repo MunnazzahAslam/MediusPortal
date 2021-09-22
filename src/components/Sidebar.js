@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faUserPlus, faUsers, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faQuestionCircle, faUser} from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faUserPlus, faUsers, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Routes } from "../routes";
@@ -16,7 +16,7 @@ export default (props = {}) => {
   const { pathname } = location;
   const [show, setShow] = useState(false);
   const showClass = show ? "show" : "";
-
+  const role = localStorage.getItem('role');
   const onCollapse = () => setShow(!show);
 
   const CollapsableNavItem = (props) => {
@@ -95,11 +95,11 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="Medius"  />
+              <NavItem title="Medius" />
 
               <NavItem title="Dashboard" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem title="Invite a Sub Admin" icon={faUserPlus} link={Routes.Signup.path} />
-
+              {role == '0' ? <NavItem title="Invite a Sub Admin" icon={faUserPlus} link={Routes.Signup.path} /> : ""
+              }
               <NavItem title="Payments" icon={faHandHoldingUsd} link={Routes.AllPayments.path} />
               <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
 

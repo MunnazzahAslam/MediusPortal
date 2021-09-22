@@ -11,10 +11,10 @@ import ItalyFlag from '../assets/img/flags/italy.svg';
 
 
 const pageVisits = [
-    { id: 1, views: 4525, returnValue: 255, bounceRate: 'Karachi', pageName: "Copy Rights" },
-    { id: 2, views: 2987, returnValue: 139, bounceRate: 'Karachi', pageName: "Designs" },
-    { id: 3, views: 2844, returnValue: 124, bounceRate: "Lahore", pageName: "Trademarks" },
-    { id: 4, views: 1220, returnValue: 55, bounceRate: 'Islamabad', pageName: "Patents" },
+    { id: 1, views: 525, returnValue: 5, bounceRate: 'Karachi', pageName: "Copy Rights" },
+    { id: 2, views: 987, returnValue: 3, bounceRate: 'Karachi', pageName: "Designs" },
+    { id: 3, views: 844, returnValue: 4, bounceRate: "Lahore", pageName: "Trademarks" },
+    { id: 4, views: 220, returnValue: 2, bounceRate: 'Islamabad', pageName: "Patents" },
 ];
 
 const pageTraffic = [

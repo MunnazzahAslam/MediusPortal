@@ -15,21 +15,21 @@ export default () => {
         <Col xs={12} className="mb-4 d-none d-sm-block">
           <SalesValueWidget
             title="Total Profit"
-            value="10,567"
-            percentage={10.57}
+            value="2576"
+            percentage={25.76}
           />
         </Col>
         <Col xs={12} className="mb-4 d-sm-none">
           <SalesValueWidgetPhone
             title="Total Profit"
-            value="10,567"
-            percentage={10.57}
+            value="2567"
+            percentage={25.67}
           />
         </Col>
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
             category="Users"
-            title="340"
+            title="4"
             period="Jul 1  - Aug 1"
             percentage={18.2}
             icon={faChartLine}
@@ -40,7 +40,7 @@ export default () => {
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
             category="Revenue"
-            title="PKR 43,594"
+            title="PKR 567"
             period="Jul 1  - Aug 1"
             percentage={28.4}
             icon={faCashRegister}

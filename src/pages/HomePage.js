@@ -17,10 +17,12 @@ import ForgotPassword from "./authPages/ForgotPassword";
 import ResetPassword from "./authPages/ResetPassword";
 import Lock from "./authPages/Lock";
 import NotFoundPage from "./authPages/NotFound";
+import Case from '../components/Case/Case';
 import ServerError from "./authPages/ServerError";
 import AllPayments from "../components/Payments/AllPayments";
 import OTP from '../pages/authPages/OTP';
 import Users from '../components/Users/Users';
+import User from '../components/Users/User';
 import CheckEmail from '../pages/authPages/CheckEmail';
 import AllCopyrights from "../components/Copyrights/AllCopyrights";
 import AllPatents from '../components/Patents/AllPatents';
@@ -30,6 +32,7 @@ import City from '../components/City/City';
 import Claim from '../components/Claim/Claim';
 import IPFilter from '../components/IPFilter/IPFilter';
 import passwordResetCode from './authPages/passwordResetCode';
+import SinglePayment from '../components/Payments/SinglePayment';
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
 import DocsDownload from "./documentation/DocsDownload";
@@ -119,7 +122,9 @@ export default () => (
       <RouteWithSidebar exact path={Routes.City.path} component={City} />
       <RouteWithSidebar exact path={Routes.Claim.path} component={Claim} />
       <RouteWithSidebar exact path={Routes.IPFilter.path} component={IPFilter} />
-
+      <RouteWithSidebar exact path={Routes.SinglePayment.path} component={SinglePayment} />
+      <RouteWithSidebar exact path={Routes.User.path} component={User} />
+      <RouteWithSidebar exact path={Routes.Case.path} component={Case} />
       {/* pages */}
       <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
       <RouteWithLoader exact path={Routes.Upgrade.path} component={Upgrade} />

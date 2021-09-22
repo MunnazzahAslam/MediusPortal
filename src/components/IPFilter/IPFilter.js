@@ -41,7 +41,7 @@ const tableIcons = {
 };
 
 const api = axios.create({
-    baseURL: `http://18.116.70.71/Api`
+    baseURL: `http://18.116.70.71`
 })
 
 
@@ -49,14 +49,14 @@ function AllIPFilter() {
 
     var columns = [
         {
-            title: "FILTER #", field: "id", hidden: false, filterPlaceholder: '1', editable: 'never',
+            title: "FILTER #", field: "id", hidden: false, filterPlaceholder: '1', 
             render: rowData =>
                 <Link to={`/IPFilter/${rowData.id}`}>
                     <p style={{ color: '#05a677', fontWeight: 'bold' }}>{rowData.id}</p>
                 </Link>
         },
         {
-            title: "NAME", field: "name", hidden: false, filterPlaceholder: 'Axios', editable: 'never', cellStyle: {
+            title: "NAME", field: "name", hidden: false, filterPlaceholder: 'Axios',  cellStyle: {
                 textAlign: 'left'
             },
             render: rowData =>
@@ -64,14 +64,14 @@ function AllIPFilter() {
 
         },
         {
-            title: "TYPE", field: "type", editable: 'never', filterPlaceholder: 'Hardware',
+            title: "TYPE", field: "type",  filterPlaceholder: 'Hardware',
             lookup: { 0: 'Filter', 1: 'Category', 2: 'Technology' },
             cellStyle: {
                 fontSize: '1rem'
             }
         },
         {
-            title: "CREATION DATE", field: "createdAt", editable: 'never', filterPlaceholder: '14-08-2021', cellStyle: {
+            title: "CREATION DATE", field: "createdAt",  filterPlaceholder: '14-08-2021', cellStyle: {
                 whiteSpace: 'nowrap', textAlign: 'left'
             },
             render: rowData =>
@@ -86,7 +86,7 @@ function AllIPFilter() {
     const [errorMessages, setErrorMessages] = useState([])
 
     useEffect(() => {
-        api.get("/IpFilter/GetAll")
+        api.get("api/IpFilter/GetAll")
             .then(res => {
                 setData(res.data)
             })
@@ -94,6 +94,64 @@ function AllIPFilter() {
                 console.log("Error")
             })
     }, [])
+
+    const handleRowAdd = (newData, resolve) => {
+        //validation
+        let errorList = []
+        if (errorList.length < 1) { //no error
+            api.post("/api/IpFilter/Add", newData)
+                .then(res => {
+                    let dataToAdd = [...data];
+                    dataToAdd.push(newData);
+                    setData(dataToAdd);
+                    resolve()
+                    setErrorMessages([])
+                    setIserror(false)
+                })
+                .catch(error => {
+                    setErrorMessages(["Cannot add data. Server error!"])
+                })
+        }
+    }
+
+    const handleRowUpdate = (newData, oldData, resolve) => {
+        api.put("/api/IpFilter/Update", newData)
+            .then(res => {
+                const dataUpdate = [...data];
+                const index = oldData.tableData.id;
+                dataUpdate[index] = newData;
+                setData([...dataUpdate]);
+                resolve()
+                setIserror(false)
+                setErrorMessages([])
+            })
+            .catch(error => {
+                setErrorMessages(["Update failed! Server error"])
+            }
+            )
+    }
+
+    const handleRowDelete = (oldData, resolve) => {
+        const id= oldData.id
+        api.delete("/api/IpFilter/Delete",
+        {
+            params: {
+                id
+            }
+        })
+            .then(res => {
+                const dataDelete = [...data];
+                const index = oldData.tableData.id;
+                dataDelete.splice(index, 1);
+                setData([...dataDelete]);
+                resolve()
+            })
+            .catch(error => {
+                setErrorMessages(["Delete failed! Server error"])
+                setIserror(true)
+                resolve()
+            })
+    }
 
     return (
         <div>
@@ -142,6 +200,20 @@ function AllIPFilter() {
                                     <MTableToolbar {...props} />
                                 </div>
                             ),
+                        }}
+                        editable={{
+                            onRowUpdate: (newData, oldData) =>
+                                new Promise((resolve) => {
+                                    handleRowUpdate(newData, oldData, resolve);
+                                }),
+                            onRowAdd: (newData) =>
+                                new Promise((resolve) => {
+                                    handleRowAdd(newData, resolve)
+                                }),
+                            onRowDelete: (oldData) =>
+                                new Promise((resolve) => {
+                                    handleRowDelete(oldData, resolve)
+                                }),
                         }}
                     />
                 </Grid>

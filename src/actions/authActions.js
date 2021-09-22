@@ -56,6 +56,9 @@ export const loginUser = userData => dispatch => {
       // Set current user
       dispatch(setCurrentUser(decoded)); 
     })
+    .catch(function (error) {
+      alert("Email or password is incorrect");
+    })
 };
 
 // OTP - get user OTP

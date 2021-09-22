@@ -49,21 +49,12 @@ function AllPayments() {
 
   var columns = [
     {
-      title: "PAYMENT #", field: "id", hidden: false, filterPlaceholder: '1', editable: 'never', cellStyle: {
-        textAlign: 'left'
-      }, width: "5%",
-      render: rowData =>
-        <Link to={`/payments/${rowData.caseId}`}>
-          <p style={{ color: '#05a677', fontWeight: 'bold' }}>{rowData.id}</p>
-        </Link>
-    },
-    {
-      title: "CASE #", field: "caseId", hidden: false, filterPlaceholder: '2', editable: 'never', cellStyle: {
+      title: "CASE NAME", field: "case.title", hidden: false, filterPlaceholder: 'Pizza Logo', editable: 'never', cellStyle: {
          textAlign: 'left'
       }, width: "5%",
       render: rowData =>
-        <Link to={`/cases/${rowData.caseId}`}>
-          <p style={{ color: '#fa5252', fontWeight: 'bold' }}>{rowData.caseId}</p>
+        <Link to={`/payment/${rowData.case.id}`}>
+          <p style={{ color: '#fa5252', fontWeight: 'bold' }}>{rowData.case.title}</p>
         </Link>
     },
     {
@@ -71,14 +62,21 @@ function AllPayments() {
         textAlign: 'left'
       }, width: "40%",
       render: rowData =>
-        <Link to={`/users/${rowData.userId}`}>
+        <Link to={`/user/${rowData.userId}`}>
           <p style={{ color: '#4a5073' }}>{rowData.email}</p>
         </Link>
     },
     {
+      title: "MODE", field: "case.modeofRegistration", editable: 'never', filterPlaceholder: 'Fast', lookup: { 1: 'Fast', 2: 'Normal' },
+      cellStyle: {
+        textAlign: 'left',
+
+      }, width: "20%",
+    },
+    {
       title: "AMOUNT", field: "amount", editable: 'never', filterPlaceholder: '200', cellStyle: {
         
-      }, width: "20%",
+      }, width: "5%",
       render: rowData =>
         <p style={{ color: '#0948B3', fontWeight: 'bold' }}>{rowData.amount}</p>
 

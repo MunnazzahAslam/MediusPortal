@@ -12,7 +12,8 @@ export const Routes = {
     Signin: { path: "/sign-in" },
     Signup: { path: "/sign-up" },
     Users: { path: "/users" },
-    Case: { path: "/case/:caseId" },
+    User: {path: "/user/:id"},
+    Case: { path: "/case/:CaseId" },
     ForgotPassword: { path: "/forgot-password" },
     ResetPassword: { path: "/reset-password" },
     ResetPasswordCode: { path: "/reset-code" },
@@ -28,7 +29,7 @@ export const Routes = {
     City: { path: "/cities" },
     Claim: { path: "/claims" },
     IPFilter: { path: "/filters" },
-
+    SinglePayment: {path:"/payment/:caseId"},
     CheckEmail: { path: "/check-email" },
     // docs
     DocsOverview: { path: "/documentation/overview" },

@@ -53,7 +53,7 @@ function AllDesigns() {
         textAlign: 'left'
       }, width: 10,
       render: rowData =>
-        <Link to={`/cases/${rowData.id}`}>
+        <Link to={`/case/${rowData.id}`}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <p style={{ color: '#05a677', fontWeight: 'bold' }}>{rowData.id}</p>
           </div>

@@ -26,6 +26,7 @@ componentWillReceiveProps(nextProps) {
       this.props.sendUserOTP(id);
       this.props.history.push("/otp"); // push user to dashboard when they login
     }
+
 if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors

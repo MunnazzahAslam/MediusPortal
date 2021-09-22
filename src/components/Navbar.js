@@ -12,7 +12,7 @@ import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 export default (props) => {
   const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
   const areNotificationsRead = notifications.reduce((acc, notif) => acc && notif.read, true);
-
+  const role = localStorage.getItem('role');
   const markNotificationsAsRead = () => {
     setTimeout(() => {
       setNotifications(notifications.map(n => ({ ...n, read: true })));
@@ -88,7 +88,7 @@ export default (props) => {
                 <div className="media d-flex align-items-center">
                   <Image src={Profile3} className="user-avatar md-avatar rounded-circle" />
                   <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                    <span className="mb-0 font-small fw-bold">Admin</span>
+                    <span className="mb-0 font-small fw-bold">{role == '0' ? "Admin": "Sub Admin"}</span>
                   </div>
                 </div>
               </Dropdown.Toggle>

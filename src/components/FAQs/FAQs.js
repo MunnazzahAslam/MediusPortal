@@ -41,7 +41,7 @@ const tableIcons = {
 };
 
 const api = axios.create({
-    baseURL: `http://18.116.70.71/Api`
+    baseURL: 'http://18.116.70.71'
 })
 
 
@@ -51,9 +51,7 @@ function AllFAQs() {
         {
             title: "FAQ #", field: "id", hidden: false, filterPlaceholder: '1', width: "10%",
             render: rowData =>
-                <Link to={`/FAQs/${rowData.id}`}>
-                    <p style={{ color: '#05a677', fontWeight: 'bold', width: '2%' }}>{rowData.id}</p>
-                </Link>
+                  <p style={{ color: '#05a677', fontWeight: 'bold', width: '2%' }}>{rowData.id}</p>
         },
         {
             title: "QUESTION", field: "question", hidden: false, filterPlaceholder: 'What is Medius?', cellStyle: {
@@ -80,6 +78,22 @@ function AllFAQs() {
                 <p style={{ color: '#4a5073', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{dateFormat(rowData.createdAt, "dd-mm-yyyy")}</p>
 
         },
+        {
+            title: "CREATED BY", field: "createdBy", width: '20%', filterPlaceholder: 'Sub Admin', cellStyle: {
+                whiteSpace: 'nowrap', textAlign: 'left'
+            },
+            render: rowData =>
+                <p style={{ color: '#4a5073', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Sub Admin</p>
+
+        },
+        {
+            title: "MODIFIED BY", field: "modifiedBy", width: '20%', filterPlaceholder: 'Sub Admin', cellStyle: {
+                whiteSpace: 'nowrap', textAlign: 'left'
+            },
+            render: rowData =>
+                <p style={{ color: '#4a5073', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Sub Admin</p>
+
+        },
     ]
     const [data, setData] = useState([]); //table data
 
@@ -88,7 +102,7 @@ function AllFAQs() {
     const [errorMessages, setErrorMessages] = useState([])
 
     useEffect(() => {
-        api.get("/FAQ/GetAll")
+        api.get("api/FAQ/GetAll")
             .then(res => {
                 setData(res.data)
             })
@@ -100,17 +114,8 @@ function AllFAQs() {
     const handleRowAdd = (newData, resolve) => {
         //validation
         let errorList = []
-        if (newData.first_name === undefined) {
-            errorList.push("Please enter first name")
-        }
-        if (newData.last_name === undefined) {
-            errorList.push("Please enter last name")
-        }
-        if (newData.email === undefined) {
-            errorList.push("Please enter a valid email")
-        }
         if (errorList.length < 1) { //no error
-            api.post("/api​/FAQ​/Add", newData)
+            api.post("/api/FAQ/Add", newData)
                 .then(res => {
                     let dataToAdd = [...data];
                     dataToAdd.push(newData);
@@ -122,12 +127,11 @@ function AllFAQs() {
                 .catch(error => {
                     setErrorMessages(["Cannot add data. Server error!"])
                 })
-        } else {
-        }
+        } 
     }
 
     const handleRowUpdate = (newData, oldData, resolve) => {
-        api.put("/api/FAQ/Update" + newData.id, newData)
+        api.put("/api/FAQ/Update" ,newData)
             .then(res => {
                 const dataUpdate = [...data];
                 const index = oldData.tableData.id;
@@ -144,7 +148,13 @@ function AllFAQs() {
     }
 
     const handleRowDelete = (oldData, resolve) => {
-        api.delete("/users/" + oldData.id)
+        const id= oldData.id
+        api.delete("/api/FAQ/Delete",
+        {
+            params: {
+                id
+            }
+        })
             .then(res => {
                 const dataDelete = [...data];
                 const index = oldData.tableData.id;
@@ -177,7 +187,7 @@ function AllFAQs() {
                         }
                     </div>
                     <MaterialTable
-                        title="User Details"
+                        title="FAQ Details"
                         style={{ font: 'Nunito Sans', fontSize: 'clamp(0.6rem, 1vw, 1rem)', color: '#212529 !important' }}
                         columns={columns}
                         data={data}
