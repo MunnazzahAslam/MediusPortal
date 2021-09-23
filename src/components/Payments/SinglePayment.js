@@ -37,7 +37,7 @@ const SinglePayment = (props) => {
           <Col xs={12} className="d-flex align-items-center justify-content-center">
             <div className="mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-1300">
               <div className="text-center text-md-center mb-4 mt-md-0">
-                <h3 className="mb-0">{data.id}</h3>
+                <h3 className="mb-0">Payment: {data.id}</h3>
               </div>
               <Form className="mt-4" noValidate>
                 <Form.Group className="mb-4">
@@ -62,24 +62,14 @@ const SinglePayment = (props) => {
                   </InputGroup>
                 </Form.Group>
                 <FormGroup className="mb-4">
-                  <Form.Label>Attached Images</Form.Label>
-                  <InputGroup>
-                    <InputGroup.Text>
-                      <FontAwesomeIcon icon={faUserAlt} />
-                    </InputGroup.Text>
-                    <Form.Control autoFocus required type="number"
-                      value={data.cnic} disabled />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup className="mb-4">
-                  <Form.Label>Status</Form.Label>
+                  <Form.Label>Case Status</Form.Label>
                   <Form.Select>
                     <option value="4">Active</option>
                     <option value="5">Not Active</option>
                   </Form.Select>
                 </FormGroup>
                 <br />
-                <Button variant="primary" type="submit" class="mt-3 ml-10">Change Account Status</Button>
+                <Button variant="primary" type="submit" class="mt-3 ml-10">Change Case Status</Button>
               </Form>
             </div>
           </Col>
