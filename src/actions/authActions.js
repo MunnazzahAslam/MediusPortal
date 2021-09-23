@@ -72,7 +72,7 @@ export const loginUser = userData => dispatch => {
 export const sendUserOTP = id => dispatch => {
   localStorage.getItem("id")
   axios
-    .get("http://18.116.70.71/api/Account/SendUserOtp",{
+    .get("http://localhost:43108/api/Account/SendUserOtp",{
       params: {
         id
       }

@@ -101,7 +101,7 @@ export default (props = {}) => {
               {role == '0' ? <NavItem title="Invite a Sub Admin" icon={faUserPlus} link={Routes.Signup.path} /> : ""
               }
               <NavItem title="Payments" icon={faHandHoldingUsd} link={Routes.AllPayments.path} />
-              <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
+              <NavItem title="Manage Profile" icon={faCog} link={Routes.Settings.path} />
 
               <NavItem title="Users" link={Routes.Users.path} icon={faUsers} />
 

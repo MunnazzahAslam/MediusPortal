@@ -49,20 +49,15 @@ function AllDesigns() {
 
   var columns = [
     {
-      title: "CASE #", field: "id", hidden: false, filterPlaceholder: '2', editable: 'never', cellStyle: {
-        textAlign: 'left'
-      }, width: 10,
-      render: rowData =>
-        <Link to={`/case/${rowData.id}`}>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <p style={{ color: '#05a677', fontWeight: 'bold' }}>{rowData.id}</p>
-          </div>
-        </Link>
-    },
-    {
       title: "TITLE", field: "title", hidden: false, filterPlaceholder: 'Chase Up Logo', editable: 'never', cellStyle: {
         textAlign: 'left'
       }, width: 30,
+      render: rowData =>
+      <Link to={`/case/${rowData.id}`}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <p style={{ color: '#05a677', fontWeight: 'bold' }}>{rowData.title}</p>
+        </div>
+      </Link>
     },
     {
       title: "STATUS", field: "status", editable: 'never', filterPlaceholder: 'Sent', lookup: { 0: 'Sent', 1: 'Seen', 2: 'Processed', 3: 'Pending', 4: 'Rejected', 5: 'Published' },
