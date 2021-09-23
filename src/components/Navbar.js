@@ -35,26 +35,26 @@ export default (props) => {
 
     return (
       <>
-      { notifications ?
-      <ListGroup.Item action className="border-bottom border-light">
-        <Row className="align-items-center">
-          <Col className="col-auto">
-            <Image src={Profile3} className="user-avatar lg-avatar rounded-circle" />
-          </Col>
-          <Col className="ps-0 ms--2">
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <h4 className="h6 mb-0 text-small">{notifications.title}</h4>
-              </div>
-              <div className="text-end">
-                <small>{notifications.createdAt}</small>
-              </div>
-            </div>
-            <p className="font-small mt-1 mb-0">{notifications.description}</p>
-          </Col>
-        </Row>
-      </ListGroup.Item> : ""
-  }
+        {notifications ?
+          <ListGroup.Item action className="border-bottom border-light">
+            <Row className="align-items-center">
+              <Col className="col-auto">
+                <Image src={Profile3} className="user-avatar lg-avatar rounded-circle" />
+              </Col>
+              <Col className="ps-0 ms--2">
+                <div className="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h4 className="h6 mb-0 text-small">{notifications.title}</h4>
+                  </div>
+                  <div className="text-end">
+                    <small>{notifications.createdAt}</small>
+                  </div>
+                </div>
+                <p className="font-small mt-1 mb-0">{notifications.description}</p>
+              </Col>
+            </Row>
+          </ListGroup.Item> : ""
+        }
       </>
     );
   };
@@ -86,7 +86,7 @@ export default (props) => {
                     Notifications
                   </Nav.Link>
 
-                  {notifications ? notifications.map(n => <Notification key={`notification-${n.id}`} {...n} /> ) : ''}
+                  {notifications ? notifications.map(n => <Notification key={`notification-${n.id}`} {...n} />) : ''}
 
                   <Dropdown.Item className="text-center text-primary fw-bold py-3">
                     View all
