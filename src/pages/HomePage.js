@@ -33,6 +33,7 @@ import Claim from '../components/Claim/Claim';
 import IPFilter from '../components/IPFilter/IPFilter';
 import passwordResetCode from './authPages/passwordResetCode';
 import SinglePayment from '../components/Payments/SinglePayment';
+import Notifications from '../components/Notifications/Notifications';
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
 import DocsDownload from "./documentation/DocsDownload";
@@ -124,6 +125,7 @@ export default () => (
       <RouteWithSidebar exact path={Routes.SinglePayment.path} component={SinglePayment} />
       <RouteWithSidebar exact path={Routes.User.path} component={User} />
       <RouteWithSidebar exact path={Routes.Case.path} component={Case} />
+      <RouteWithSidebar exact path={Routes.Notifications.path} component={Notifications} />
       {/* pages */}
       <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
       <RouteWithLoader exact path={Routes.Upgrade.path} component={Upgrade} />

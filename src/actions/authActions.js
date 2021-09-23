@@ -27,6 +27,13 @@ export const forgotPassword = (userData, history) => dispatch => {
     .then(res => history.push("/reset-code")) // re-direct to reset password on successful email deployment
 };
 
+// Forgot Password
+export const NotificationsUser = (userData, history) => dispatch => {
+  axios
+    .post("http://18.116.70.71/api/Notification/Add", userData)
+    .then(res => history.push("/notification")) // re-direct to reset password on successful email deployment
+};
+
 // Reset Password
 export const resetPassword = (userData, history) => dispatch => {
   axios

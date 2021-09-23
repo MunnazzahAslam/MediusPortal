@@ -31,6 +31,7 @@ export const Routes = {
     IPFilter: { path: "/filters" },
     SinglePayment: {path:"/payment/:caseId"},
     CheckEmail: { path: "/check-email" },
+    Notifications: {path: "/notification"},
     // docs
     DocsOverview: { path: "/documentation/overview" },
     DocsDownload: { path: "/documentation/download" },

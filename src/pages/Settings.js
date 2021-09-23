@@ -8,6 +8,8 @@ import { Col, Row, Button, Form, Card } from '@themesberg/react-bootstrap';
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 import ProfileCover from "../assets/img/profile-cover.jpg";
 import { UpdateUser } from "../actions/authActions";
+import { Link } from "react-router-dom";
+import {Routes} from '../routes';
 
 class Settings extends Component {
   constructor() {
@@ -60,7 +62,9 @@ class Settings extends Component {
                     <Button variant="primary" size="sm" className="me-2">
                       <FontAwesomeIcon icon={faClosedCaptioning} className="me-1" />Delete Account
                     </Button>
+                    <Card.Link className="small text-end" as={Link} to={Routes.Notifications.path}>
                     <Button variant="secondary" size="sm">Send Notification</Button>
+                    </Card.Link>
                   </Card.Body>
                 </Card>
               </Col>
