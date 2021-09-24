@@ -108,7 +108,7 @@ class Settings extends Component {
                     <Col md={6} className="mb-3">
                       <Form.Group id="phone">
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control required type="number" autoFocus required type="integer" placeholder="03002178894" onChange={this.onChange}
+                        <Form.Control required type="number" autoFocus required type="integer" placeholder="+923124449588" onChange={this.onChange}
                           value={this.state.phoneNumber}
                           id="phoneNumber" disabled/>
                       </Form.Group>

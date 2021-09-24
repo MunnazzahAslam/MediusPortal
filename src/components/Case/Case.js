@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUnlockAlt, faUserAlt, faAddressBook } from "@fortawesome/free-solid-svg-icons";
-import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup, FormGroup, Image } from '@themesberg/react-bootstrap';
+import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup, FormGroup, Image, Popover } from '@themesberg/react-bootstrap';
 import { Link } from "react-router-dom";
 const api = axios.create({
     baseURL: `http://18.116.70.71`
@@ -28,6 +28,39 @@ const User = (props) => {
                 console.log(error)
             })
     }, [])
+
+    const rejected = (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">Rejection Details</Popover.Header>
+            <Popover.Body>
+                <Form.Control autoFocus required type="text"
+                    value=""
+                    placeholder="Please right case rejection details"
+                    id="desc"
+                    disabled as="textarea" rows={3} />
+                    <Button variant="primary" type="submit" class="mt-3 ml-10">Send Update</Button>
+            </Popover.Body>
+        </Popover>
+    );
+
+
+    const published = (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">Approval Details</Popover.Header>
+            <Popover.Body>
+                <Form.Control autoFocus required type="text"
+                    value=""
+                    placeholder="Please right case approval details"
+                    id="desc"
+                    disabled as="textarea" rows={3} />
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Upload approval documents</Form.Label>
+                    <Form.Control type="file" />
+                </Form.Group>
+                <Button variant="primary" type="submit" class="mt-3 ml-10">Send Update</Button>
+            </Popover.Body>
+        </Popover>
+    );
 
     return (
         <div className="mt-5">
@@ -72,19 +105,19 @@ const User = (props) => {
                                 </Form.Group>
                                 <Row>
                                     <Col sm={6} className="mb-3">
-                                <FormGroup className="mb-4">
-                                    <Form.Label>Account status</Form.Label>
-                                    <Form.Control autoFocus required type="text"
-                                        value={data.isActive === true ? "Active" : "Not Active"}
-                                        id="status" disabled />
-                                </FormGroup>
-                                </Col>
-                                <Col sm={6} className="mb-3">
-                                <FormGroup className="mb-4">
+                                        <FormGroup className="mb-4">
+                                            <Form.Label>Account status</Form.Label>
+                                            <Form.Control autoFocus required type="text"
+                                                value={data.isActive === true ? "Active" : "Not Active"}
+                                                id="status" disabled />
+                                        </FormGroup>
+                                    </Col>
+                                    <Col sm={6} className="mb-3">
+                                        <FormGroup className="mb-4">
                                             <Form.Label>Status</Form.Label>
                                             {role == '2' ?
                                                 data.status == '0' ?
-                                                    <Form.Select aria-label="Send to">
+                                                    <Form.Select aria-label="Send to" value="Sent">
                                                         <option value="0">Sent</option>
                                                         <option value="1">Seen</option>
                                                         <option value="2" disabled>Processed</option>
@@ -92,7 +125,7 @@ const User = (props) => {
                                                     </Form.Select>
                                                     :
                                                     data.status == '1' ?
-                                                        <Form.Select aria-label="Send to">
+                                                        <Form.Select aria-label="Send to" value="Seen">
                                                             <option value="0" disabled>Sent</option>
                                                             <option value="1">Seen</option>
                                                             <option value="2" >Processed</option>
@@ -100,14 +133,14 @@ const User = (props) => {
                                                         </Form.Select>
                                                         :
                                                         data.status == '2' ?
-                                                            <Form.Select aria-label="Send to">
+                                                            <Form.Select aria-label="Send to" value="Processed">
                                                                 <option value="0" disabled>Sent</option>
                                                                 <option value="1" disabled>Seen</option>
                                                                 <option value="2" >Processed</option>
                                                                 <option value="3" disabled>Pending</option>
                                                             </Form.Select>
                                                             :
-                                                            <Form.Select aria-label="Send to">
+                                                            <Form.Select aria-label="Send to" value="Pending">
                                                                 <option value="0" disabled>Sent</option>
                                                                 <option value="1" disabled>Seen</option>
                                                                 <option value="2" disabled>Processed</option>
@@ -115,22 +148,22 @@ const User = (props) => {
                                                             </Form.Select>
                                                 :
                                                 <Form.Select aria-label="Send to">
-                                                    <option value="4">Rejected</option>
-                                                    <option value="5">Published</option>
+                                                    <option value="4" onClick={rejected}>Rejected</option>
+                                                    <option value="5" onClick={published}>Published</option>
                                                 </Form.Select>
                                             }
                                         </FormGroup>
-                                        </Col>
-                                        </Row>
-                                        <br />
-                                        <Button variant="primary" type="submit" class="mt-3 ml-10">Change Status</Button>
-                                    </Form>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div >
-                );
+                                    </Col>
+                                </Row>
+                                <br />
+                                <Button variant="primary" type="submit" class="mt-3 ml-10">Change Status</Button>
+                            </Form>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div >
+    );
 }
 
-                export default User;
+export default User;
