@@ -56,7 +56,7 @@ export const PageVisitsTable = () => {
         <thead className="thead-light">
           <tr>
             <th scope="col">Case Type</th>
-            <th scope="col">Case Revenue</th>
+            <th scope="col">Case Price</th>
             <th scope="col"># of Customers</th>
             <th scope="col">Top Cities</th>
           </tr>

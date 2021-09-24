@@ -40,7 +40,7 @@ const tableIcons = {
 };
 
 const api = axios.create({
-    baseURL: 'http://18.116.70.71'
+    baseURL: 'http://localhost:43108/'
 })
 
 

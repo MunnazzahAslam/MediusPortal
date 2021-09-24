@@ -15,11 +15,13 @@ class Settings extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      cnic: "",
-      phoneNumber: "",
+      firstName: localStorage.getItem('firstName'),
+      lastName: localStorage.getItem('lastName'),
+      email: localStorage.getItem('email'),
+      cnic: localStorage.getItem('cninc'),
+      phoneNumber: localStorage.getItem('phoneNumber'),
+      imagePath: localStorage.getItem('imagePath'),
+      role: localStorage.getItem('role')
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -39,7 +41,8 @@ class Settings extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
-      cnic: this.state.cnic
+      cnic: this.state.cnic,
+      imagePath: this.state.imagePath
     };
     this.props.UpdateUser(newUser, this.props.history);
   };
@@ -54,9 +57,9 @@ class Settings extends Component {
                 <Card border="light" className="text-center p-0 mb-4">
                   <div style={{ backgroundImage: `url(${ProfileCover})` }} className="profile-cover rounded-top" />
                   <Card.Body className="pb-5">
-                    <Card.Img src={Profile3} alt="Neil Portrait" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
-                    <Card.Title>Munnazzah Aslam</Card.Title>
-                    <Card.Subtitle className="fw-normal">Sub Admin</Card.Subtitle>
+                    <Card.Img src={this.state.imagePath} alt="Neil Portrait" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
+                    <Card.Title>{this.state.firstName} {this.state.lastName}</Card.Title>
+                    <Card.Subtitle className="fw-normal">{this.state.role==0 ?"Admin":"Sub Admin"}</Card.Subtitle>
                     <Card.Text className="text-gray mb-4">Karachi, Pakistan</Card.Text>
 
                     <Button variant="primary" size="sm" className="me-2">
@@ -99,7 +102,7 @@ class Settings extends Component {
                         <Form.Label>Email</Form.Label>
                         <Form.Control required type="email" autoFocus required type="email" placeholder="example@company.com" onChange={this.onChange}
                           value={this.state.email}
-                          id="email" />
+                          id="email" disabled/>
                       </Form.Group>
                     </Col>
                     <Col md={6} className="mb-3">
@@ -107,7 +110,7 @@ class Settings extends Component {
                         <Form.Label>Phone</Form.Label>
                         <Form.Control required type="number" autoFocus required type="integer" placeholder="03002178894" onChange={this.onChange}
                           value={this.state.phoneNumber}
-                          id="phoneNumber" />
+                          id="phoneNumber" disabled/>
                       </Form.Group>
                     </Col>
                     <Col md={6} className="mb-3">
@@ -115,7 +118,7 @@ class Settings extends Component {
                         <Form.Label>CNIC</Form.Label>
                         <Form.Control required type="number" autoFocus required type="text" placeholder="4210103404580" onChange={this.onChange}
                           value={this.state.cnic}
-                          id="cnic" />
+                          id="cnic" disabled />
                       </Form.Group>
                     </Col>
                   </Row>

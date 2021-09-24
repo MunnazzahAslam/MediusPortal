@@ -67,13 +67,6 @@ function AllPayments() {
         </Link>
     },
     {
-      title: "MODE", field: "case.modeofRegistration", editable: 'never', filterPlaceholder: 'Fast', lookup: { 1: 'Fast', 2: 'Normal' },
-      cellStyle: {
-        textAlign: 'left',
-
-      }, width: "20%",
-    },
-    {
       title: "AMOUNT", field: "amount", editable: 'never', filterPlaceholder: '200', cellStyle: {
         
       }, width: "5%",
@@ -88,6 +81,13 @@ function AllPayments() {
       render: rowData =>
         <p style={{ color: '#4a5073', display: 'flex', alignItems: 'center', justifyContent: 'start' }}>{dateFormat(rowData.createdAt, "dd-mm-yyyy")}</p>
 
+    },
+    {
+      title: "MODE", field: "case.modeofRegistration", editable: 'never', filterPlaceholder: 'Fast', lookup: { 1: 'Fast', 2: 'Normal' },
+      cellStyle: {
+        textAlign: 'left',
+
+      }, width: "20%",
     },
   ]
   const [data, setData] = useState([]); //table data

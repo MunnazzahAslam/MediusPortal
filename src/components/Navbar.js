@@ -11,6 +11,9 @@ import axios from 'axios'
 export default (props) => {
   const [notifications, setNotifications] = "";
   const id = localStorage.getItem('id');
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const imagePath = localStorage.getItem('imagePath');
   const api = axios.create({
     baseURL: `http://18.116.70.71`
   })
@@ -98,9 +101,9 @@ export default (props) => {
             <Dropdown as={Nav.Item}>
               <Dropdown.Toggle as={Nav.Link} className="pt-1 px-0">
                 <div className="media d-flex align-items-center">
-                  <Image src={Profile3} className="user-avatar md-avatar rounded-circle" />
+                  <Image src={imagePath} className="user-avatar md-avatar rounded-circle" />
                   <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                    <span className="mb-0 font-small fw-bold">{role == '0' ? "Admin" : "Sub Admin"}</span>
+                    <span className="mb-0 font-small fw-bold">{firstName} {lastName}</span>
                   </div>
                 </div>
               </Dropdown.Toggle>

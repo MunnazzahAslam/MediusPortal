@@ -37,7 +37,7 @@ export default () => {
 
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
-            category="Revenue"
+            category="Average Case Price"
             title="PKR 567"
             period="Jul 1  - Aug 1"
             percentage={28.4}
@@ -69,7 +69,7 @@ export default () => {
                 <Col xs={12} className="mb-4">
                   <BarChartWidget
                     title="Total Cases"
-                    value={452}
+                    value={35}
                     percentage={18.2}
                     data={totalOrders} />
                 </Col>
